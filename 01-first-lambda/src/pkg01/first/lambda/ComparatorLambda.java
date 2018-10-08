@@ -17,15 +17,19 @@ import java.util.List;
  */
 public class ComparatorLambda {
     public static void main(String[] args) {
-        Comparator<String> comparator = new Comparator<String>(){
-            @Override
-            public int compare(String o1, String o2) {
-                return Integer.compare(o1.length(), o2.length());
-            }            
-        };
+//        Comparator<String> comparator = new Comparator<String>(){
+//            @Override
+//            public int compare(String o1, String o2) {
+//                return Integer.compare(o1.length(), o2.length());
+//            }            
+//        };
+        
+        Comparator<String> compLambda = (String o1, String o2) ->
+                  Integer.compare(o1.length(), o2.length());
         
         List<String> list = Arrays.asList("muruga", "om muruga", "palani");
-        Collections.sort(list, comparator);
+//        Collections.sort(list, comparator);
+        Collections.sort(list, compLambda);
         
         for(String data: list){
             System.out.println(data);
