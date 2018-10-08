@@ -18,17 +18,20 @@ public class FirstLambda {
     public static void main(String[] args) {
         
         // Anonymous class for FileFilter
-        FileFilter fileFilter = new FileFilter() {
-            @Override
-            public boolean accept(File pathname) {
-                // If pathname ends with .docx, then pathname will be returned
-                return pathname.getName().endsWith(".docx");
-            }            
-        };
+//        FileFilter fileFilter = new FileFilter() {
+//            @Override
+//            public boolean accept(File pathname) {
+//                // If pathname ends with .docx, then pathname will be returned
+//                return pathname.getName().endsWith(".docx");
+//            }            
+//        };
+
+        FileFilter fileFilterLambda = (File pathname) -> pathname.getName().endsWith(".docx");
                 
         File dir = new File("D:\\Murugan 70-480");        
         
-        File[] filesLst = dir.listFiles(fileFilter);
+//        File[] filesLst = dir.listFiles(fileFilter);
+        File[] filesLst = dir.listFiles(fileFilterLambda);
         
         for(File file: filesLst){
             System.out.println(file);
