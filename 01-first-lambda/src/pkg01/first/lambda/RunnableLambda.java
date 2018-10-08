@@ -13,16 +13,23 @@ package pkg01.first.lambda;
 public class RunnableLambda {
     
     public static void main(String[] args) throws InterruptedException {
-        Runnable runnable = new Runnable(){
-            @Override
-            public void run() {
-                for(int i=0;i<3;i++){
+//        Runnable runnable = new Runnable(){
+//            @Override
+//            public void run() {
+//                for(int i=0;i<3;i++){
+//                    System.out.println("Thread "+Thread.currentThread().getName());
+//                }
+//            }            
+//        };
+        
+        Runnable runnableLambda = () -> {
+            for(int i=0;i<3;i++){
                     System.out.println("Thread "+Thread.currentThread().getName());
                 }
-            }            
         };
         
-        Thread thread = new Thread(runnable);
+//        Thread thread = new Thread(runnable);
+        Thread thread = new Thread(runnableLambda);
         thread.start();
         thread.join();
     }
